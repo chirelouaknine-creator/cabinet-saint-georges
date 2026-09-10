@@ -438,8 +438,8 @@ a {
     flex-shrink: 0;
   }
   .founder-card {
-    margin: 0 0 0 -90px;
-    padding: 36px 52px 36px 118px;
+    margin: 0 0 0 -180px;
+    padding: 36px 52px 36px 210px;
     max-width: 640px;
     box-sizing: border-box;
   }
