@@ -439,8 +439,8 @@ a {
   }
   .founder-card {
     margin: 0 0 0 -90px;
-    padding: 48px 48px 48px 120px;
-    max-width: 520px;
+    padding: 36px 52px 36px 118px;
+    max-width: 640px;
     box-sizing: border-box;
   }
   .founder-card h2 {
