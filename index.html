@@ -130,7 +130,7 @@
   <p class="section-subtitle">Le cabinet couvre l'ensemble des soins dentaires, des traitements de routine aux interventions spécialisées.</p>
 
   <div class="container">
-    <p class="services-note">Faites glisser ou cliquez sur une prestation</p>
+    <p class="services-note">Cliquez sur une prestation ou utilisez les flèches</p>
     <div class="coverflow" id="prestationsCoverflow">
       <div class="services-carousel">
         <button type="button" class="services-arrow services-arrow-prev" aria-label="Prestation précédente">
@@ -270,122 +270,44 @@
     const nextBtn = root.querySelector('.services-arrow-next');
 
     const count = cards.length;
-    const rotate = 44, depth = 0.6, falloff = 0.56, fade = 0.1, gap = 0.05;
-
-    let pos = 0, target = 0, width = 0, raf = null, selected = 0, didDrag = false;
-    let drag = null;
-
-    const indexAt = (p) => ((Math.round(p) % count) + count) % count;
+    let selected = 0;
 
     function paint() {
-      if (!width) return;
-      const pitch = width * (1 + gap);
       cards.forEach((card, i) => {
-        let offset = i - pos;
-        offset = ((offset % count) + count) % count;
-        if (offset > count / 2) offset -= count;
-        const distance = Math.abs(offset);
-        const ramp = Math.pow(distance, falloff);
-        const tilt = Math.min(rotate * ramp, 82) * Math.sign(offset);
-        card.style.transform =
-          `translateX(calc(-50% + ${offset * pitch}px)) translateZ(${-depth * width * ramp}px) rotateY(${-tilt}deg)`;
-        const edge = Math.min(1, Math.max(0, count / 2 - distance));
-        card.style.opacity = String(Math.max(0, 1 - fade * distance) * edge);
-        card.style.zIndex = String(100 - Math.round(distance));
+        const rel = (i - selected + count) % count;
+        card.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden');
+        if (rel === 0) card.classList.add('is-active');
+        else if (rel === 1) card.classList.add('is-next');
+        else if (rel === count - 1) card.classList.add('is-prev');
+        else card.classList.add('is-hidden');
       });
     }
 
-    function measure() {
-      width = cards[0].offsetWidth;
-      paint();
-    }
-
-    function updateCaption(index) {
-      const card = cards[index];
+    function updateCaption() {
+      const card = cards[selected];
       captionTitle.textContent = card.dataset.title || '';
       captionDesc.textContent = card.dataset.desc || '';
-      dots.forEach((d, i) => d.setAttribute('aria-current', String(i === index)));
-    }
-
-    function settle(t) {
-      if (raf !== null) cancelAnimationFrame(raf);
-      target = t;
-      const idx = indexAt(t);
-      if (idx !== selected) {
-        selected = idx;
-        updateCaption(selected);
-      }
-      const step = () => {
-        const remaining = target - pos;
-        if (Math.abs(remaining) < 0.0004) {
-          pos = target;
-          paint();
-          raf = null;
-          return;
-        }
-        pos += remaining * 0.16;
-        paint();
-        raf = requestAnimationFrame(step);
-      };
-      raf = requestAnimationFrame(step);
+      dots.forEach((d, i) => d.setAttribute('aria-current', String(i === selected)));
     }
 
     function goTo(index) {
-      settle(index + Math.round((target - index) / count) * count);
+      selected = ((index % count) + count) % count;
+      paint();
+      updateCaption();
     }
 
-    function nudge(by) {
-      settle(Math.round(target) + by);
-    }
-
-    prevBtn.addEventListener('click', () => nudge(-1));
-    nextBtn.addEventListener('click', () => nudge(1));
+    prevBtn.addEventListener('click', () => goTo(selected - 1));
+    nextBtn.addEventListener('click', () => goTo(selected + 1));
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-    cards.forEach((card, i) => card.addEventListener('click', () => {
-      if (didDrag) return;
-      goTo(i);
-    }));
+    cards.forEach((card, i) => card.addEventListener('click', () => goTo(i)));
 
     viewport.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') { e.preventDefault(); nudge(-1); }
-      else if (e.key === 'ArrowRight') { e.preventDefault(); nudge(1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(selected - 1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); goTo(selected + 1); }
     });
 
-    viewport.addEventListener('pointerdown', (e) => {
-      if (raf !== null) { cancelAnimationFrame(raf); raf = null; }
-      viewport.setPointerCapture(e.pointerId);
-      target = pos;
-      didDrag = false;
-      drag = { id: e.pointerId, x: e.clientX, pos, v: 0, t: performance.now() };
-    });
-
-    viewport.addEventListener('pointermove', (e) => {
-      if (!drag || drag.id !== e.pointerId) return;
-      const pitch = width * (1 + gap);
-      if (!pitch) return;
-      if (Math.abs(e.clientX - drag.x) > 3) didDrag = true;
-      const now = performance.now();
-      const prevPos = pos;
-      pos = drag.pos - (e.clientX - drag.x) / pitch;
-      drag.v = ((pos - prevPos) / Math.max(now - drag.t, 1)) * 1000;
-      drag.t = now;
-      const idx = indexAt(pos);
-      if (idx !== selected) { selected = idx; updateCaption(selected); }
-      paint();
-    });
-
-    function endDrag(e) {
-      if (!drag || drag.id !== e.pointerId) return;
-      const carried = Math.max(-2, Math.min(2, drag.v * 0.18));
-      drag = null;
-      settle(Math.round(pos + carried));
-    }
-    viewport.addEventListener('pointerup', endDrag);
-    viewport.addEventListener('pointercancel', endDrag);
-
-    new ResizeObserver(measure).observe(viewport);
-    measure();
-    updateCaption(0);
+    paint();
+    updateCaption();
   })();
 </script>
 
