@@ -582,6 +582,112 @@ a {
   }
 }
 
+/* Coverflow (Prestations) */
+.coverflow {
+  --cf-card: clamp(148px, 22vw, 260px);
+}
+
+.coverflow-viewport {
+  position: relative;
+  overflow: hidden;
+  padding: 40px 0;
+  cursor: grab;
+  outline: none;
+  touch-action: pan-y;
+  perspective: calc(var(--cf-card) * 3);
+}
+
+.coverflow-viewport:active {
+  cursor: grabbing;
+}
+
+.coverflow-viewport:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.coverflow-track {
+  position: relative;
+  height: var(--cf-card);
+  transform-style: preserve-3d;
+}
+
+.coverflow-card {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: var(--cf-card);
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--bg-alt);
+  box-shadow: 0 18px 34px rgba(26,20,20,0.18);
+  will-change: transform;
+  cursor: pointer;
+}
+
+.coverflow-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.coverflow .services-arrow {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.coverflow-caption {
+  margin-top: 4px;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.coverflow-caption .service-title {
+  display: block;
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin-bottom: 8px;
+}
+
+.coverflow-caption p {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.coverflow-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+.coverflow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.3;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.coverflow-dot[aria-current="true"] {
+  opacity: 1;
+}
+
+.coverflow-dot:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
 .service-card summary {
   display: flex;
   flex-direction: column;

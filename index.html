@@ -130,108 +130,64 @@
   <p class="section-subtitle">Le cabinet couvre l'ensemble des soins dentaires, des traitements de routine aux interventions spécialisées.</p>
 
   <div class="container">
-    <p class="services-note">Cliquez sur une prestation pour en savoir plus</p>
-    <div class="services-carousel">
-    <button type="button" class="services-arrow services-arrow-prev" aria-label="Prestations précédentes">
-      <svg viewBox="0 0 24 24"><path d="M15.5 3.5l-8.5 8.5 8.5 8.5-1.5 1.5-10-10 10-10z"></path></svg>
-    </button>
-    <button type="button" class="services-arrow services-arrow-next" aria-label="Prestations suivantes">
-      <svg viewBox="0 0 24 24"><path d="M8.5 3.5l8.5 8.5-8.5 8.5 1.5 1.5 10-10-10-10z"></path></svg>
-    </button>
-    <div class="services-grid">
+    <p class="services-note">Faites glisser ou cliquez sur une prestation</p>
+    <div class="coverflow" id="prestationsCoverflow">
+      <div class="services-carousel">
+        <button type="button" class="services-arrow services-arrow-prev" aria-label="Prestation précédente">
+          <svg viewBox="0 0 24 24"><path d="M15.5 3.5l-8.5 8.5 8.5 8.5-1.5 1.5-10-10 10-10z"></path></svg>
+        </button>
+        <button type="button" class="services-arrow services-arrow-next" aria-label="Prestation suivante">
+          <svg viewBox="0 0 24 24"><path d="M8.5 3.5l8.5 8.5-8.5 8.5 1.5 1.5 10-10-10-10z"></path></svg>
+        </button>
+        <div class="coverflow-viewport" id="cfViewport" tabindex="0">
+          <div class="coverflow-track" id="cfTrack">
 
-      <details class="service-card">
-        <summary>
-          <span class="service-photo">
-            <img src="https://images.unsplash.com/photo-1663755489920-5e09f66d011a?auto=format&fit=crop&w=500&q=80" alt="Détartrage dentaire" loading="lazy">
-          </span>
-          <span class="service-card-row">
-            <span class="service-title">Détartrage</span>
-            <span class="service-chevron">＋</span>
-          </span>
-        </summary>
+            <div class="coverflow-card" data-title="Détartrage" data-desc="Élimination du tartre et de la plaque dentaire pour prévenir caries et maladies des gencives. Recommandé une à deux fois par an.">
+              <img src="https://images.unsplash.com/photo-1663755489920-5e09f66d011a?auto=format&fit=crop&w=500&h=500&q=80" alt="Détartrage dentaire">
+            </div>
+
+            <div class="coverflow-card" data-title="Soins des caries" data-desc="Traitement des caries par obturation (plombage) esthétique, pour stopper leur évolution et préserver la dent.">
+              <img src="https://images.unsplash.com/photo-1667133295352-ef4c83620e8e?auto=format&fit=crop&w=500&h=500&q=80" alt="Soins des caries">
+            </div>
+
+            <div class="coverflow-card" data-title="Blanchiment dentaire" data-desc="Éclaircissement de la teinte des dents pour un sourire plus lumineux, réalisé en toute sécurité au cabinet.">
+              <img src="https://images.unsplash.com/photo-1654373535457-383a0a4d00f9?auto=format&fit=crop&w=500&h=500&q=80" alt="Blanchiment dentaire">
+            </div>
+
+            <div class="coverflow-card" data-title="Couronnes &amp; prothèses" data-desc="Restauration des dents abîmées ou manquantes avec des couronnes, bridges ou prothèses sur mesure.">
+              <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=500&h=500&q=80" alt="Couronnes et prothèses dentaires">
+            </div>
+
+            <div class="coverflow-card" data-title="Implants dentaires" data-desc="Remplacement durable d'une ou plusieurs dents manquantes par des implants, avec un résultat naturel.">
+              <img src="https://images.unsplash.com/photo-1593022356769-11f762e25ed9?auto=format&fit=crop&w=500&h=500&q=80" alt="Implant dentaire">
+            </div>
+
+            <div class="coverflow-card" data-title="Extraction dentaire" data-desc="Retrait d'une dent (dent de sagesse, dent trop abîmée...) dans les meilleures conditions de confort.">
+              <img src="https://images.unsplash.com/photo-1606811856475-5e6fcdc6e509?auto=format&fit=crop&w=500&h=500&q=80" alt="Extraction dentaire">
+            </div>
+
+            <div class="coverflow-card" data-title="Urgences dentaires" data-desc="Douleur, dent cassée ou infection : le cabinet prend en charge vos urgences dentaires rapidement.">
+              <img src="https://images.unsplash.com/photo-1771442873038-dda05b6ca447?auto=format&fit=crop&w=500&h=500&q=80" alt="Urgence dentaire">
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="coverflow-caption" id="cfCaption">
+        <span class="service-title">Détartrage</span>
         <p>Élimination du tartre et de la plaque dentaire pour prévenir caries et maladies des gencives. Recommandé une à deux fois par an.</p>
-      </details>
+      </div>
 
-      <details class="service-card">
-        <summary>
-          <span class="service-photo">
-            <img src="https://images.unsplash.com/photo-1667133295352-ef4c83620e8e?auto=format&fit=crop&w=500&q=80" alt="Soins des caries" loading="lazy">
-          </span>
-          <span class="service-card-row">
-            <span class="service-title">Soins des caries</span>
-            <span class="service-chevron">＋</span>
-          </span>
-        </summary>
-        <p>Traitement des caries par obturation (plombage) esthétique, pour stopper leur évolution et préserver la dent.</p>
-      </details>
-
-      <details class="service-card">
-        <summary>
-          <span class="service-photo">
-            <img src="https://images.unsplash.com/photo-1654373535457-383a0a4d00f9?auto=format&fit=crop&w=500&q=80" alt="Blanchiment dentaire" loading="lazy">
-          </span>
-          <span class="service-card-row">
-            <span class="service-title">Blanchiment dentaire</span>
-            <span class="service-chevron">＋</span>
-          </span>
-        </summary>
-        <p>Éclaircissement de la teinte des dents pour un sourire plus lumineux, réalisé en toute sécurité au cabinet.</p>
-      </details>
-
-      <details class="service-card">
-        <summary>
-          <span class="service-photo">
-            <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=500&q=80" alt="Couronnes et prothèses dentaires" loading="lazy">
-          </span>
-          <span class="service-card-row">
-            <span class="service-title">Couronnes &amp; prothèses</span>
-            <span class="service-chevron">＋</span>
-          </span>
-        </summary>
-        <p>Restauration des dents abîmées ou manquantes avec des couronnes, bridges ou prothèses sur mesure.</p>
-      </details>
-
-      <details class="service-card">
-        <summary>
-          <span class="service-photo">
-            <img src="https://images.unsplash.com/photo-1593022356769-11f762e25ed9?auto=format&fit=crop&w=500&q=80" alt="Implant dentaire" loading="lazy">
-          </span>
-          <span class="service-card-row">
-            <span class="service-title">Implants dentaires</span>
-            <span class="service-chevron">＋</span>
-          </span>
-        </summary>
-        <p>Remplacement durable d'une ou plusieurs dents manquantes par des implants, avec un résultat naturel.</p>
-      </details>
-
-      <details class="service-card">
-        <summary>
-          <span class="service-photo">
-            <img src="https://images.unsplash.com/photo-1606811856475-5e6fcdc6e509?auto=format&fit=crop&w=500&q=80" alt="Extraction dentaire" loading="lazy">
-          </span>
-          <span class="service-card-row">
-            <span class="service-title">Extraction dentaire</span>
-            <span class="service-chevron">＋</span>
-          </span>
-        </summary>
-        <p>Retrait d'une dent (dent de sagesse, dent trop abîmée...) dans les meilleures conditions de confort.</p>
-      </details>
-
-      <details class="service-card">
-        <summary>
-          <span class="service-photo">
-            <img src="https://images.unsplash.com/photo-1771442873038-dda05b6ca447?auto=format&fit=crop&w=500&q=80" alt="Urgence dentaire" loading="lazy">
-          </span>
-          <span class="service-card-row">
-            <span class="service-title">Urgences dentaires</span>
-            <span class="service-chevron">＋</span>
-          </span>
-        </summary>
-        <p>Douleur, dent cassée ou infection : le cabinet prend en charge vos urgences dentaires rapidement.</p>
-      </details>
-
-    </div>
+      <div class="coverflow-dots" id="cfDots">
+        <button type="button" class="coverflow-dot" aria-current="true" aria-label="Aller à Détartrage"></button>
+        <button type="button" class="coverflow-dot" aria-label="Aller à Soins des caries"></button>
+        <button type="button" class="coverflow-dot" aria-label="Aller à Blanchiment dentaire"></button>
+        <button type="button" class="coverflow-dot" aria-label="Aller à Couronnes et prothèses"></button>
+        <button type="button" class="coverflow-dot" aria-label="Aller à Implants dentaires"></button>
+        <button type="button" class="coverflow-dot" aria-label="Aller à Extraction dentaire"></button>
+        <button type="button" class="coverflow-dot" aria-label="Aller à Urgences dentaires"></button>
+      </div>
     </div>
   </div>
 </section>
@@ -301,18 +257,136 @@
     });
   });
 
-  const servicesGrid = document.querySelector('.services-grid');
-  const prevArrow = document.querySelector('.services-arrow-prev');
-  const nextArrow = document.querySelector('.services-arrow-next');
-  if (servicesGrid && prevArrow && nextArrow) {
-    const scrollStep = () => servicesGrid.querySelector('.service-card').offsetWidth + 24;
-    prevArrow.addEventListener('click', () => {
-      servicesGrid.scrollBy({ left: -scrollStep(), behavior: 'smooth' });
+  (function () {
+    const root = document.getElementById('prestationsCoverflow');
+    if (!root) return;
+    const viewport = document.getElementById('cfViewport');
+    const track = document.getElementById('cfTrack');
+    const cards = Array.from(track.querySelectorAll('.coverflow-card'));
+    const dots = Array.from(root.querySelectorAll('#cfDots .coverflow-dot'));
+    const captionTitle = root.querySelector('#cfCaption .service-title');
+    const captionDesc = root.querySelector('#cfCaption p');
+    const prevBtn = root.querySelector('.services-arrow-prev');
+    const nextBtn = root.querySelector('.services-arrow-next');
+
+    const count = cards.length;
+    const rotate = 44, depth = 0.6, falloff = 0.56, fade = 0.1, gap = 0.05;
+
+    let pos = 0, target = 0, width = 0, raf = null, selected = 0, didDrag = false;
+    let drag = null;
+
+    const indexAt = (p) => ((Math.round(p) % count) + count) % count;
+
+    function paint() {
+      if (!width) return;
+      const pitch = width * (1 + gap);
+      cards.forEach((card, i) => {
+        let offset = i - pos;
+        offset = ((offset % count) + count) % count;
+        if (offset > count / 2) offset -= count;
+        const distance = Math.abs(offset);
+        const ramp = Math.pow(distance, falloff);
+        const tilt = Math.min(rotate * ramp, 82) * Math.sign(offset);
+        card.style.transform =
+          `translateX(calc(-50% + ${offset * pitch}px)) translateZ(${-depth * width * ramp}px) rotateY(${-tilt}deg)`;
+        const edge = Math.min(1, Math.max(0, count / 2 - distance));
+        card.style.opacity = String(Math.max(0, 1 - fade * distance) * edge);
+        card.style.zIndex = String(100 - Math.round(distance));
+      });
+    }
+
+    function measure() {
+      width = cards[0].offsetWidth;
+      paint();
+    }
+
+    function updateCaption(index) {
+      const card = cards[index];
+      captionTitle.textContent = card.dataset.title || '';
+      captionDesc.textContent = card.dataset.desc || '';
+      dots.forEach((d, i) => d.setAttribute('aria-current', String(i === index)));
+    }
+
+    function settle(t) {
+      if (raf !== null) cancelAnimationFrame(raf);
+      target = t;
+      const idx = indexAt(t);
+      if (idx !== selected) {
+        selected = idx;
+        updateCaption(selected);
+      }
+      const step = () => {
+        const remaining = target - pos;
+        if (Math.abs(remaining) < 0.0004) {
+          pos = target;
+          paint();
+          raf = null;
+          return;
+        }
+        pos += remaining * 0.16;
+        paint();
+        raf = requestAnimationFrame(step);
+      };
+      raf = requestAnimationFrame(step);
+    }
+
+    function goTo(index) {
+      settle(index + Math.round((target - index) / count) * count);
+    }
+
+    function nudge(by) {
+      settle(Math.round(target) + by);
+    }
+
+    prevBtn.addEventListener('click', () => nudge(-1));
+    nextBtn.addEventListener('click', () => nudge(1));
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+    cards.forEach((card, i) => card.addEventListener('click', () => {
+      if (didDrag) return;
+      goTo(i);
+    }));
+
+    viewport.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); nudge(-1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); nudge(1); }
     });
-    nextArrow.addEventListener('click', () => {
-      servicesGrid.scrollBy({ left: scrollStep(), behavior: 'smooth' });
+
+    viewport.addEventListener('pointerdown', (e) => {
+      if (raf !== null) { cancelAnimationFrame(raf); raf = null; }
+      viewport.setPointerCapture(e.pointerId);
+      target = pos;
+      didDrag = false;
+      drag = { id: e.pointerId, x: e.clientX, pos, v: 0, t: performance.now() };
     });
-  }
+
+    viewport.addEventListener('pointermove', (e) => {
+      if (!drag || drag.id !== e.pointerId) return;
+      const pitch = width * (1 + gap);
+      if (!pitch) return;
+      if (Math.abs(e.clientX - drag.x) > 3) didDrag = true;
+      const now = performance.now();
+      const prevPos = pos;
+      pos = drag.pos - (e.clientX - drag.x) / pitch;
+      drag.v = ((pos - prevPos) / Math.max(now - drag.t, 1)) * 1000;
+      drag.t = now;
+      const idx = indexAt(pos);
+      if (idx !== selected) { selected = idx; updateCaption(selected); }
+      paint();
+    });
+
+    function endDrag(e) {
+      if (!drag || drag.id !== e.pointerId) return;
+      const carried = Math.max(-2, Math.min(2, drag.v * 0.18));
+      drag = null;
+      settle(Math.round(pos + carried));
+    }
+    viewport.addEventListener('pointerup', endDrag);
+    viewport.addEventListener('pointercancel', endDrag);
+
+    new ResizeObserver(measure).observe(viewport);
+    measure();
+    updateCaption(0);
+  })();
 </script>
 
 </body>
