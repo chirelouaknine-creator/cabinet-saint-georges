@@ -433,18 +433,14 @@ a {
     max-width: none;
   }
   .founder-photo {
-    width: 42vw;
-    max-width: 620px;
+    width: 38vw;
+    max-width: 480px;
     flex-shrink: 0;
   }
   .founder-card {
     margin: 0 0 0 -90px;
-    padding: 56px 56px 56px 130px;
-    max-width: 560px;
-    min-height: min(calc(42vw + 110px), 730px);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    padding: 48px 48px 48px 120px;
+    max-width: 520px;
     box-sizing: border-box;
   }
   .founder-card h2 {
