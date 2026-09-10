@@ -65,15 +65,19 @@
   </nav>
 </header>
 
-<section id="accueil" class="hero">
-  <video class="hero-video" autoplay muted loop playsinline poster="cabinet-accueil.jpg">
-    <source src="hero-video.mp4" type="video/mp4">
-  </video>
-  <div class="hero-overlay"></div>
-  <p class="hero-eyebrow">Cabinet Saint Georges</p>
-  <div class="hero-bottom">
-    <h1>Des soins de confiance<br>pour toute la famille</h1>
-    <p class="hero-location">Cabinet dentaire à Saint-Georges-sur-Eure</p>
+<section id="accueil" class="hero-float">
+  <div class="hero-float-inner">
+    <p class="hero-eyebrow">Cabinet dentaire à Saint-Georges-sur-Eure</p>
+    <h1 class="hero-float-title">Cabinet Saint Georges</h1>
+    <p class="hero-float-sub">Des soins de confiance pour toute la famille, dans un cadre chaleureux et rassurant.</p>
+    <div class="hero-float-stage" id="heroFloatStage">
+      <div class="hero-float-glow" aria-hidden="true"></div>
+      <div class="hero-float-card" id="heroFloatCard">
+        <video autoplay muted loop playsinline poster="cabinet-accueil.jpg">
+          <source src="hero-video.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
     <a class="btn btn-gold" href="https://www.doctolib.fr/dentiste/le-bourget/raphael-zafrani-le-bourget" target="_blank" rel="noopener noreferrer">Prendre rendez-vous</a>
   </div>
 </section>
@@ -255,6 +259,25 @@
       burgerBtn.setAttribute('aria-expanded', 'false');
     });
   });
+
+  (function () {
+    const stage = document.getElementById('heroFloatStage');
+    const card = document.getElementById('heroFloatCard');
+    if (!stage || !card) return;
+    const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (coarse || reduceMotion) return;
+
+    stage.addEventListener('pointermove', (e) => {
+      const rect = stage.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `rotateY(${-8 + px * 16}deg) rotateX(${3 - py * 12}deg)`;
+    });
+    stage.addEventListener('pointerleave', () => {
+      card.style.transform = 'rotateY(-8deg) rotateX(3deg)';
+    });
+  })();
 
   (function () {
     const root = document.getElementById('prestationsCoverflow');
