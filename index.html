@@ -299,10 +299,7 @@
     prevBtn.addEventListener('click', () => goTo(selected - 1));
     nextBtn.addEventListener('click', () => goTo(selected + 1));
     dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
-    cards.forEach((card, i) => {
-      card.addEventListener('click', () => goTo(i));
-      card.addEventListener('mouseenter', () => goTo(i));
-    });
+    cards.forEach((card, i) => card.addEventListener('click', () => goTo(i)));
 
     viewport.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(selected - 1); }
