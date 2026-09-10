@@ -588,7 +588,7 @@ a {
 
 /* Coverflow (Prestations) */
 .coverflow {
-  --cf-card: clamp(148px, 22vw, 260px);
+  --cf-card: clamp(190px, 34vw, 320px);
 }
 
 .coverflow-viewport {
