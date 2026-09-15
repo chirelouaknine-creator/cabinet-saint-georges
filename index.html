@@ -66,9 +66,7 @@
 </header>
 
 <section id="accueil" class="hero">
-  <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="cabinet-accueil.jpg">
-    <source src="hero-video.mp4" type="video/mp4">
-  </video>
+  <img class="hero-video" src="cabinet-accueil.jpg" alt="Cabinet Saint Georges">
   <div class="hero-overlay"></div>
   <p class="hero-eyebrow">Cabinet Saint Georges</p>
   <div class="hero-bottom">
@@ -100,14 +98,8 @@
   </div>
 </section>
 
-<div class="showcase">
-  <img class="showcase-img" src="cabinet-accueil.jpg" alt="Accueil du Cabinet Saint Georges à Saint-Georges-sur-Eure">
-  <img class="showcase-img" src="https://images.unsplash.com/photo-1667133295315-820bb6481730?auto=format&fit=crop&w=1600&q=80" alt="Examen dentaire avec assistance numérique" loading="lazy">
-  <img class="showcase-img" src="https://images.unsplash.com/photo-1681939282781-341ac4f61996?auto=format&fit=crop&w=1600&q=80" alt="Contrôle dentaire de routine" loading="lazy">
-  <img class="showcase-img" src="https://images.unsplash.com/photo-1657470179447-0f5aa16daa91?auto=format&fit=crop&w=1600&q=80" alt="Soin dentaire réalisé avec précision" loading="lazy">
-</div>
 
-<section class="split-block">
+<section class="split-block split-block-light">
   <div class="split-inner">
     <div class="split-card">
       <div class="info-orb">
@@ -122,15 +114,17 @@
 </section>
 
 <section class="founder">
-  <div class="founder-photo">
-    <img src="dr-zafrani.jpg" alt="Dr Raphaël Zafrany, chirurgien-dentiste">
-  </div>
-  <div class="founder-card">
-    <h2>Dr Raphaël Zafrany</h2>
-    <p class="founder-role">Chirurgien-dentiste, fondateur du Cabinet Saint Georges</p>
-    <div class="divider"></div>
-    <p>Diplômé de l'Université de Paris, le Dr Raphaël Zafrany vous accueille au Cabinet Saint Georges avec une même exigence : offrir à chaque patient des soins précis, dans un cadre chaleureux et rassurant.</p>
-    <p>Je vous invite à découvrir le cabinet et son équipe, et à nous confier le soin de votre sourire.</p>
+  <div class="founder-inner">
+    <div class="founder-photo">
+      <img src="dr-zafrani.jpg" alt="Dr Raphaël Zafrany, chirurgien-dentiste">
+    </div>
+    <div class="founder-card">
+      <h2>Dr Raphaël Zafrany</h2>
+      <p class="founder-role">Chirurgien-dentiste, fondateur du Cabinet Saint Georges</p>
+      <div class="divider"></div>
+      <p>Diplômé de l'Université de Paris, le Dr Raphaël Zafrany vous accueille au Cabinet Saint Georges avec une même exigence : offrir à chaque patient des soins précis, dans un cadre chaleureux et rassurant.</p>
+      <p>Je vous invite à découvrir le cabinet et son équipe, et à nous confier le soin de votre sourire.</p>
+    </div>
   </div>
 </section>
 
@@ -246,9 +240,11 @@
 </section>
 
 <section class="cta-final">
-  <h2>Vous souhaitez prendre<br>un premier rendez-vous ?</h2>
-  <p>Réservez en ligne en quelques clics via notre plateforme Doctolib.</p>
-  <a class="btn btn-gold" href="https://www.doctolib.fr/dentiste/le-bourget/raphael-zafrani-le-bourget" target="_blank" rel="noopener noreferrer">Prendre rendez-vous</a>
+  <div class="cta-box">
+    <h2>Vous souhaitez prendre<br>un premier rendez-vous ?</h2>
+    <p>Réservez en ligne en quelques clics via notre plateforme Doctolib.</p>
+    <a class="btn btn-gold" href="https://www.doctolib.fr/dentiste/le-bourget/raphael-zafrani-le-bourget" target="_blank" rel="noopener noreferrer">Prendre rendez-vous</a>
+  </div>
 </section>
 
 <footer id="contact" class="site-footer">
@@ -260,25 +256,6 @@
 </footer>
 
 <script>
-  (function () {
-    const video = document.getElementById('heroVideo');
-    if (!video) return;
-    const tryPlay = () => video.play().catch(() => {});
-    tryPlay();
-    document.addEventListener('visibilitychange', () => {
-      if (!document.hidden) tryPlay();
-    });
-    const resumeOnGesture = () => {
-      if (video.paused) tryPlay();
-      window.removeEventListener('touchstart', resumeOnGesture);
-      window.removeEventListener('pointerdown', resumeOnGesture);
-      window.removeEventListener('scroll', resumeOnGesture);
-    };
-    window.addEventListener('touchstart', resumeOnGesture, { passive: true });
-    window.addEventListener('pointerdown', resumeOnGesture);
-    window.addEventListener('scroll', resumeOnGesture, { passive: true, once: true });
-  })();
-
   const burgerBtn = document.getElementById('burgerBtn');
   const megaNav = document.getElementById('megaNav');
   burgerBtn.addEventListener('click', () => {
